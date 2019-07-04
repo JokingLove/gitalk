@@ -4,6 +4,7 @@ import autosize from 'autosize'
 
 import i18n from './i18n'
 import './style/index.styl'
+import emojidata from './emoji.json'
 import {
   queryParse,
   queryStringify,
@@ -18,6 +19,7 @@ import Button from './component/button'
 import Action from './component/action'
 import Comment from './component/comment'
 import Svg from './component/svg'
+import Emoji from './component/emoji'
 import { GT_ACCESS_TOKEN, GT_VERSION, GT_COMMENT } from './const'
 import QLGetComments from './graphql/getComments'
 
@@ -46,6 +48,8 @@ class GitalkComponent extends Component {
 
     isOccurError: false,
     errorMsg: '',
+    emojiShow: false,
+    emojis: []
   }
   constructor (props) {
     super(props)
@@ -144,6 +148,8 @@ class GitalkComponent extends Component {
         })
     }
 
+    // 查询 emoji
+    this.getEmojiJson()
     this.i18n = i18n(this.options.language)
   }
   componentDidUpdate () {
@@ -626,6 +632,15 @@ class GitalkComponent extends Component {
               text={this.i18n.t('comment')}
               isLoading={isCreating}
             />}
+            {/* emoji */}
+            <Button
+              className="gt-btn-preview"
+              onClick={this.handleEmojiClick}
+              text={this.i18n.t('emoji-label')}
+              // isLoading={isPreviewing}
+            />
+
+            {this.state.emojiShow ? this.emojiContent(this.state.emojis) : null}
 
             <Button
               className="gt-btn-preview"
@@ -668,6 +683,21 @@ class GitalkComponent extends Component {
         </div> : null}
       </div>
     )
+  }
+  handleEmojiClick = e => {
+    console.log(this)
+    console.log(this.state)
+    const { emojiShow } = this.state
+    this.setState({ emojiShow: !emojiShow })
+  }
+  getEmojiJson () {
+    this.setState({ emojis: emojidata })
+  }
+  emojiClick () {
+    console.log(this)
+  }
+  emojiContent (data) {
+    return (<Emoji onClick="emojiClick" data-list="data"/>)
   }
   meta () {
     const { user, issue, isPopupVisible, pagerDirection, localComments } = this.state

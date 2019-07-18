@@ -1,15 +1,11 @@
 import React from 'react'
 
-export default ({ className, onClick, list }) => (
-  <div className={`gt-emoji-card ${className}`}>
+export default ({ show, className, onClick, dataList }) => (
+  <div id="emojiCon" className={`gt-emoji-card ${className}`} style={{ display: (show) ? 'block' : 'none' }}>
     {
-      list.map(item =>
-        (
-        <a className={`gt-emoji`} onClick={() => this.onClick(this)}>
-          <span className="gt-action-text">item</span>
-        </a>
-        )
-      )
+      Object.keys(dataList).map(item => (<a href="javascript:void(0)" className="gt-emoji-a">
+        <span className="gt-emoji-symbol" data={item} onClick={onClick} >{dataList[item]}</span>
+      </a>))
     }
   </div>
 )

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import emoji from './emoji'
 
 export const queryParse = (search = window.location.search) => {
   if (!search) return {}
@@ -72,3 +73,24 @@ export const hasClassInParent = (element, ...className) => {
   /* istanbul ignore next */
   return element.parentNode && hasClassInParent(element.parentNode, className)
 }
+
+
+// 输入框获取光标
+export const getPosition = element => {
+  let cursorPos = 0
+  if (document.selection) { // IE
+    const selectRange = document.selection.createRange()
+    selectRange.moveStart('character', -element.value.length)
+    cursorPos = selectRange.text.length
+  } else if (element.selectionStart || element.selectionStart === '0') {
+    cursorPos = element.selectionStart
+  }
+  return cursorPos
+}
+
+export const getEmojiComments = (comment, emojiValue) =>
+  // console.log(emojiValue)
+  // console.log(comment)
+  // `${comment}:${emojiValue}:`
+  comment + emojiValue
+

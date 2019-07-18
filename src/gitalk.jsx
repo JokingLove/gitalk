@@ -4,7 +4,7 @@ import autosize from 'autosize'
 
 import i18n from './i18n'
 import './style/index.styl'
-import emojidata from './emoji.json'
+import emojidata from './emoji.js'
 import {
   queryParse,
   queryStringify,
@@ -12,7 +12,8 @@ import {
   axiosGithub,
   getMetaContent,
   formatErrorMsg,
-  hasClassInParent
+  hasClassInParent,
+  getEmojiComments
 } from './util'
 import Avatar from './component/avatar'
 import Button from './component/button'
@@ -151,6 +152,9 @@ class GitalkComponent extends Component {
     // 查询 emoji
     this.getEmojiJson()
     this.i18n = i18n(this.options.language)
+    window.document.addEventListener('click', e => {
+      window.document.getElementById('emojiCon').style.display = 'none'
+    })
   }
   componentDidUpdate () {
     this.commentEL && autosize(this.commentEL)
@@ -640,7 +644,6 @@ class GitalkComponent extends Component {
               // isLoading={isPreviewing}
             />
 
-            {this.state.emojiShow ? this.emojiContent(this.state.emojis) : null}
 
             <Button
               className="gt-btn-preview"
@@ -685,19 +688,26 @@ class GitalkComponent extends Component {
     )
   }
   handleEmojiClick = e => {
-    console.log(this)
-    console.log(this.state)
+    // console.log(this)
+    // console.log(this.state)
     const { emojiShow } = this.state
     this.setState({ emojiShow: !emojiShow })
   }
   getEmojiJson () {
     this.setState({ emojis: emojidata })
   }
-  emojiClick () {
-    console.log(this)
+  emojiClick = e => {
+    e = e || window.event
+    e.stopPropagation ? (e.stopPropagation()) : (e.cancelBubble = true)
+
+    const { comment } = this.state
+    // const emojiValue = e.target.getAttribute('data')
+    const emoji = e.target.innerHTML
+    this.setState({ comment: getEmojiComments(comment, emoji) })
   }
-  emojiContent (data) {
-    return (<Emoji onClick="emojiClick" data-list="data"/>)
+  emoji () {
+    const { emojis, emojiShow } = this.state
+    return <Emoji onClick={this.emojiClick} dataList={emojis} show={emojiShow}/>
   }
   meta () {
     const { user, issue, isPopupVisible, pagerDirection, localComments } = this.state
@@ -774,6 +784,7 @@ class GitalkComponent extends Component {
             this.noInit()
           ] : [
             this.header(),
+            this.emoji(),
             this.comments()
           ])
         }

@@ -12,7 +12,7 @@ $gt-color-comment-txt := #333333
 $gt-color-link-active := #333333
 $gt-color-btn := #ffffff
 $gt-color-popbg := #ffffff
-$gt-size-base := 16px // default font-size
+$gt-size-base := 18px // default font-size
 $gt-size-border-radius := 5px
 $gt-breakpoint-mobile := 479px
 $gt-mask-z-index := 9999
@@ -298,7 +298,7 @@ $gt-size-avatar-mobi := em(32px)
       max-height: em(240px)
       border-radius: $gt-size-border-radius
       border: 1px solid $gt-color-input-border
-      font-size: em(14px)
+      font-size: em(16px)
       word-wrap: break-word
       resize: vertical
       background-color: $gt-color-input-bg
@@ -421,3 +421,19 @@ $gt-size-avatar-mobi := em(32px)
     transform: rotate(0)
   100%
     transform: rotate(360deg)
+
+.gt-emoji-card 
+  height: 300px
+  overflow: scroll
+  border: 1px solid #9999993d
+  border-radius: 10px
+  margin: 8px auto
+  padding: 10px
+  -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.1)
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1)
+  -webkit-transform: translate3d(0, -2px, 0)
+  transform: translate3d(0, -2px, 0)
+  .gt-emoji-a 
+    text-decoration: none
+    .gt-emoji-symbol
+      font-size: $gt-size-base

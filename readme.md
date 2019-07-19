@@ -170,7 +170,9 @@ A **GitHub Application** is needed for authorization, if you don't have one, [Cl
       leaveAnimation: 'accordionVertical',
     }
   ```
-
+ - **placeholder** `String`
+   Default: Leave a comment.
+   
   Comment list animation. [Reference](https://github.com/joshwcomeau/react-flip-move/blob/master/documentation/enter_leave_animations.md)
 
 - **enableHotKey** `Boolean` 

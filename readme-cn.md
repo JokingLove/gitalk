@@ -176,6 +176,10 @@ gitalk.render('gitalk-container')
 
   启用快捷键(cmd|ctrl + enter) 提交评论.
 
+- **placeholder** `String`
+  
+  Default: '说点什么'
+
 
 ## 实例方法
 

@@ -73,15 +73,13 @@ class GitalkComponent extends Component {
         leaveAnimation: 'accordionVertical',
       },
       enableHotKey: true,
-
+      placeholder: '',
       url: window.location.href,
-
       defaultAuthor: {
         avatarUrl: '//avatars1.githubusercontent.com/u/29697133?s=50',
         login: 'null',
         url: '',
       },
-
       updateCountCallback: null
     }, props.options)
 
@@ -619,7 +617,7 @@ class GitalkComponent extends Component {
             onFocus={this.handleCommentFocus}
             onBlur={this.handleCommentBlur}
             onKeyDown={this.handleCommentKeyDown}
-            placeholder={this.i18n.t('leave-a-comment')}
+            placeholder={this.options.placeholder ? this.options.placeholder : this.i18n.t('leave-a-comment')}
           />
           <div
             className={`gt-header-preview markdown-body ${isPreview ? '' : 'hide'}`}

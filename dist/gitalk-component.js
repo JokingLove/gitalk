@@ -4600,15 +4600,13 @@ var GitalkComponent = function (_Component) {
         leaveAnimation: 'accordionVertical'
       },
       enableHotKey: true,
-
+      placeholder: '',
       url: window.location.href,
-
       defaultAuthor: {
         avatarUrl: '//avatars1.githubusercontent.com/u/29697133?s=50',
         login: 'null',
         url: ''
       },
-
       updateCountCallback: null
     }, props.options);
 
@@ -5064,7 +5062,7 @@ var GitalkComponent = function (_Component) {
             onFocus: this.handleCommentFocus,
             onBlur: this.handleCommentBlur,
             onKeyDown: this.handleCommentKeyDown,
-            placeholder: this.i18n.t('leave-a-comment')
+            placeholder: this.options.placeholder ? this.options.placeholder : this.i18n.t('leave-a-comment')
           }),
           _react2.default.createElement('div', {
             className: 'gt-header-preview markdown-body ' + (isPreview ? '' : 'hide'),
@@ -8763,13 +8761,13 @@ module.exports = {"init":"Gitalk 加载中 ...","no-found-related":"未找到相
 /* 140 */
 /***/ (function(module, exports) {
 
-module.exports = {"init":"Gitalk 載入中…","no-found-related":"未找到相關的 %{link}","please-contact":"請聯絡 %{user} 初始化評論","init-issue":"初始化 Issue","leave-a-comment":"寫點什麼","preview":"預覽","edit":"編輯","comment":"評論","support-markdown":"支援 Markdown 語法","login-with-github":"使用 GitHub 登入","first-comment-person":"成為首個留言的人吧！","commented":"評論於","load-more":"載入更多","counts":"%{counts} 筆評論","sort-asc":"從舊至新排序","sort-desc":"從新至舊排序","logout":"登出","anonymous":"訪客"}
+module.exports = {"init":"Gitalk 載入中…","no-found-related":"未找到相關的 %{link}","please-contact":"請聯絡 %{user} 初始化評論","init-issue":"初始化 Issue","leave-a-comment":"寫點什麼","preview":"預覽","edit":"編輯","comment":"評論","support-markdown":"支援 Markdown 語法","login-with-github":"使用 GitHub 登入","first-comment-person":"成為首個留言的人吧！","commented":"評論於","load-more":"載入更多","counts":"%{counts} 筆評論","sort-asc":"從舊至新排序","sort-desc":"從新至舊排序","logout":"登出","anonymous":"訪客","emoji-label":"表情"}
 
 /***/ }),
 /* 141 */
 /***/ (function(module, exports) {
 
-module.exports = {"init":"Gitalking ...","no-found-related":"Related %{link} not found","please-contact":"Please contact %{user} to initialize the comment","init-issue":"Init Issue","leave-a-comment":"Leave a comment","preview":"Preview","edit":"Edit","comment":"Comment","support-markdown":"Markdown is supported","login-with-github":"Login with GitHub","first-comment-person":"Be the first guy leaving a comment!","commented":"commented","load-more":"Load more","counts":"%{counts} comment |||| %{counts} comments","sort-asc":"Sort by Oldest","sort-desc":"Sort by Latest","logout":"Logout","anonymous":"Anonymous"}
+module.exports = {"init":"Gitalking ...","no-found-related":"Related %{link} not found","please-contact":"Please contact %{user} to initialize the comment","init-issue":"Init Issue","leave-a-comment":"Leave a comment","preview":"Preview","edit":"Edit","comment":"Comment","support-markdown":"Markdown is supported","login-with-github":"Login with GitHub","first-comment-person":"Be the first guy leaving a comment!","commented":"commented","load-more":"Load more","counts":"%{counts} comment |||| %{counts} comments","sort-asc":"Sort by Oldest","sort-desc":"Sort by Latest","logout":"Logout","anonymous":"Anonymous","emoji-label":"Emoji"}
 
 /***/ }),
 /* 142 */
@@ -8787,7 +8785,7 @@ module.exports = {"init":"Gitalking ...","no-found-related":"Lien %{link} non tr
 /* 144 */
 /***/ (function(module, exports) {
 
-module.exports = {"init":"Gitalking ...","no-found-related":"Связанные %{link} не найдены","please-contact":"Пожалуйста, свяжитесь с %{user} чтобы инициализировать комментарий","init-issue":"Выпуск инициализации","leave-a-comment":"Оставить комментарий","preview":"Предварительный просмотр","edit":"Pедактировать","comment":"Комментарий","support-markdown":"Поддерживается Markdown","login-with-github":"Вход через GitHub","first-comment-person":"Будьте первым, кто оставил комментарий","commented":"прокомментированный","load-more":"Загрузить ещё","counts":"%{counts} комментарий |||| %{counts} комментарьев","sort-asc":"Сортировать по старым","sort-desc":"Сортировать по последним","logout":"Выход","anonymous":"Анонимный"}
+module.exports = {"init":"Gitalking ...","no-found-related":"Связанные %{link} не найдены","please-contact":"Пожалуйста, свяжитесь с %{user} чтобы инициализировать комментарий","init-issue":"Выпуск инициализации","leave-a-comment":"Оставить комментарий","preview":"Предварительный просмотр","edit":"Pедактировать","comment":"Комментарий","support-markdown":"Поддерживается Markdown","login-with-github":"Вход через GitHub","first-comment-person":"Будьте первым, кто оставил комментарий","commented":"прокомментированный","load-more":"Загрузить ещё","counts":"%{counts} комментарий |||| %{counts} комментарьев","sort-asc":"Сортировать по старым","sort-desc":"Сортировать по последним","logout":"Выход","anonymous":"Анонимный","emoji-label":"emoji"}
 
 /***/ }),
 /* 145 */

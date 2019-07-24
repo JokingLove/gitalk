@@ -1474,7 +1474,7 @@ module.exports = function (it) {
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isDate = __webpack_require__(202)
+var isDate = __webpack_require__(205)
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -7849,13 +7849,13 @@ var _svg = __webpack_require__(81);
 
 var _svg2 = _interopRequireDefault(_svg);
 
-var _emoji3 = __webpack_require__(218);
+var _emoji3 = __webpack_require__(221);
 
 var _emoji4 = _interopRequireDefault(_emoji3);
 
-var _const = __webpack_require__(219);
+var _const = __webpack_require__(222);
 
-var _getComments = __webpack_require__(220);
+var _getComments = __webpack_require__(223);
 
 var _getComments2 = _interopRequireDefault(_getComments);
 
@@ -12275,13 +12275,13 @@ module.exports = {"init":"Gitalking ...","no-found-related":"Related %{link} not
 /* 156 */
 /***/ (function(module, exports) {
 
-module.exports = {"init":"Gitalking ...","no-found-related":"Link %{link} no encontrado","please-contact":"Por favor contacta con %{user} para inicializar el comentario","init-issue":"Iniciar Issue","leave-a-comment":"Deja un comentario","preview":"Avance","edit":"Editar","comment":"Comentario","support-markdown":"Markdown es soportado","login-with-github":"Entrar con GitHub","first-comment-person":"Sé el primero en dejar un comentario!","commented":"comentó","load-more":"Cargar más","counts":"%{counts} comentario |||| %{counts} comentarios","sort-asc":"Ordenar por Antiguos","sort-desc":"Ordenar por Recientes","logout":"Salir","anonymous":"Anónimo"}
+module.exports = {"init":"Gitalking ...","no-found-related":"Link %{link} no encontrado","please-contact":"Por favor contacta con %{user} para inicializar el comentario","init-issue":"Iniciar Issue","leave-a-comment":"Deja un comentario","preview":"Avance","edit":"Editar","comment":"Comentario","support-markdown":"Markdown es soportado","login-with-github":"Entrar con GitHub","first-comment-person":"Sé el primero en dejar un comentario!","commented":"comentó","load-more":"Cargar más","counts":"%{counts} comentario |||| %{counts} comentarios","sort-asc":"Ordenar por Antiguos","sort-desc":"Ordenar por Recientes","logout":"Salir","anonymous":"Anónimo","emoji-label":"emoji"}
 
 /***/ }),
 /* 157 */
 /***/ (function(module, exports) {
 
-module.exports = {"init":"Gitalking ...","no-found-related":"Lien %{link} non trouvé","please-contact":"S’il vous plaît contactez %{user} pour initialiser les commentaires","init-issue":"Initialisation des issues","leave-a-comment":"Laisser un commentaire","preview":"Aperçu","edit":"Modifier","comment":"Commentaire","support-markdown":"Markdown est supporté","login-with-github":"Se connecter avec GitHub","first-comment-person":"Être le premier à laisser un commentaire !","commented":"commenter","load-more":"Charger plus","counts":"%{counts} commentaire |||| %{counts} commentaires","sort-asc":"Trier par plus ancien","sort-desc":"Trier par plus récent","logout":"Déconnexion","anonymous":"Anonyme"}
+module.exports = {"init":"Gitalking ...","no-found-related":"Lien %{link} non trouvé","please-contact":"S’il vous plaît contactez %{user} pour initialiser les commentaires","init-issue":"Initialisation des issues","leave-a-comment":"Laisser un commentaire","preview":"Aperçu","edit":"Modifier","comment":"Commentaire","support-markdown":"Markdown est supporté","login-with-github":"Se connecter avec GitHub","first-comment-person":"Être le premier à laisser un commentaire !","commented":"commenter","load-more":"Charger plus","counts":"%{counts} commentaire |||| %{counts} commentaires","sort-asc":"Trier par plus ancien","sort-desc":"Trier par plus récent","logout":"Déconnexion","anonymous":"Anonyme","emoji-label":"emoji"}
 
 /***/ }),
 /* 158 */
@@ -13425,31 +13425,31 @@ var _svg = __webpack_require__(81);
 
 var _svg2 = _interopRequireDefault(_svg);
 
-var _distance_in_words_to_now = __webpack_require__(199);
+var _distance_in_words_to_now = __webpack_require__(202);
 
 var _distance_in_words_to_now2 = _interopRequireDefault(_distance_in_words_to_now);
 
-var _index = __webpack_require__(212);
+var _index = __webpack_require__(215);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _index3 = __webpack_require__(213);
+var _index3 = __webpack_require__(216);
 
 var _index4 = _interopRequireDefault(_index3);
 
-var _index5 = __webpack_require__(214);
+var _index5 = __webpack_require__(217);
 
 var _index6 = _interopRequireDefault(_index5);
 
-var _index7 = __webpack_require__(215);
+var _index7 = __webpack_require__(218);
 
 var _index8 = _interopRequireDefault(_index7);
 
-var _index9 = __webpack_require__(216);
+var _index9 = __webpack_require__(219);
 
 var _index10 = _interopRequireDefault(_index9);
 
-__webpack_require__(217);
+__webpack_require__(220);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -13566,7 +13566,7 @@ var Comment = function (_Component) {
             ) : _react2.default.createElement(
               'a',
               { className: 'gt-comment-reply', onClick: replyCallback },
-              _react2.default.createElement(_svg2.default, { className: 'gt-ico-reply', name: 'reply' })
+              _react2.default.createElement(_svg2.default, { className: 'gt-ico-reply', name: 'reply-2' })
             )
           ),
           _react2.default.createElement('div', {
@@ -13594,8 +13594,11 @@ var map = {
 	"./github.svg": 194,
 	"./heart.svg": 195,
 	"./heart_on.svg": 196,
-	"./reply.svg": 197,
-	"./tip.svg": 198
+	"./no-zan.svg": 197,
+	"./reply-2.svg": 198,
+	"./reply.svg": 199,
+	"./tip.svg": 200,
+	"./zan.svg": 201
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -13647,19 +13650,37 @@ module.exports = "<svg t=\"1512463363724\" viewBox=\"0 0 1024 1024\" version=\"1
 /* 197 */
 /***/ (function(module, exports) {
 
-module.exports = "<svg viewBox=\"0 0 1332 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M529.066665 273.066666 529.066665 0 51.2 477.866666 529.066665 955.733335 529.066665 675.84C870.4 675.84 1109.333335 785.066665 1280 1024 1211.733335 682.666665 1006.933335 341.333334 529.066665 273.066666\"></path>\n</svg>\n"
+module.exports = "<svg t=\"1563937372492\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"7973\" width=\"200\" height=\"200\"><path d=\"M172.261295 749.10577532c32.37704801 8.499637 108.515027 8.400704 219.866331 11.332716-5.258435 24.30652-6.473611 46.213667-6.473611 85.120688 0 92.93219199 67.688907 174.792491 127.606083 174.792491 42.268342 0 77.151491-34.581354 77.679134-77.102924 0.582605-52.159036 16.700677-142.261147 103.610552-187.946172 6.378675-3.365118 24.61631-12.342032 27.270511-13.534823l-1.366074-1.161213c13.612771 11.73704199 32.453996 20.719352 51.805276 20.719352L849.969409 761.32589032c42.849748 0 77.706515-34.859765 77.706515-77.709113l1e-8-414.432015c0-42.848948-34.856767-77.709113-77.70651501-77.709113l-77.709513 0c-30.835494 0-56.608419 18.620375-69.104947 44.725476-0.305793-0.100932-0.862415-0.255827-1.216175-0.30479299-1.715837-0.454692-3.71947801-0.960349-6.195799-1.61590401-0.45669-0.105928-0.710518-0.159892-1.193191-0.31078899-14.92388199-3.692496-43.632217-10.570833-105.021595-24.68506401-13.185061-2.983977-82.65975701-17.808926-154.695716-17.808926l-141.608589 0c-43.154541 0-74.267447 16.589752-92.782893 49.932146-0.253828 0.50565699-6.221782 12.147764-11.080487 27.881097-3.64253 11.827981-5.007605 28.575626-0.607588 45.576899-27.822936 19.127032-36.778064 48.011248-42.596919 66.818497-9.765379 30.862076-6.82937 54.031167-0.053963 70.624916-15.630403 14.77498301-28.98235 37.282722-34.60154 71.63723-3.487635 21.295562 0.253828 43.202509 10.071172 61.447139-14.673851 16.466236-21.352323 37.185188-22.108011 56.35659l-0.308791 5.414329c-0.20186301 3.413686-0.354759 5.517259-0.354759 12.97420301C98.80010199 692.87190232 121.466734 734.58362132 172.261295 749.10577532zM746.359057 269.18476232c0-14.316294 11.584146-25.89944 25.90044-25.89944L849.969409 243.28532232c14.317693 0 25.902438 11.583147 25.902438 25.89944L875.871847 683.61617732c0 14.318292-11.58454599 25.90044-25.902438 25.90044l-77.707714 0c-14.318292 0-25.90243799-11.582147-25.902438-25.90044l0-414.431416L746.359057 269.18476232zM151.214565 643.84973932c0.504658-12.79832301 5.868021-37.936679 51.19409-37.936679 38.860652 0 51.807674 0 51.807674 0 7.185128 0 12.953218-5.79607001 12.953218-12.957215 0-7.157747-5.76808901-12.946622-12.953218-12.946622 0 0-11.330318 0-50.183775 0-38.85545599 0-43.963992-32.230148-41.432709-47.760418 3.182842-19.329894 12.242699-55.85493 55.998833-55.85493 43.712163 0 61.522088 0 61.522088 0 7.186128 0 12.94922-5.768089 12.94922-12.951219 0-7.13516201-5.762893-12.948221-12.94922-12.948221 0 0-30.761144 0-50.997224 0-43.709365 0-39.862973-33.344193-33.589227-53.223714 8.24441-26.143275 13.302981-50.377644 68.399425-50.377644 18.614379 0 42.238163 0 42.238163 0 7.184129 0 12.948221-5.76709 12.94822101-12.951219 0-7.13516201-5.764092-12.952218-12.94822101-12.952218 0 0-17.959823 0-40.617461 0-28.336788 0-29.653895-26.811822-26.715687-36.421106 3.237805-10.526863 7.0792-18.316581 7.232896-18.670342 7.840684-14.117428 20.438143-22.612669 47.151831-22.612669l141.608589 0c71.124578 0 141.665551 16.133062 143.486316 16.54378301 107.606843 24.783197 113.27100201 26.709891 120.027421 28.63158799 0 0 21.908146 3.691497 21.908146 22.812533l0.199864 357.748447c0 12.142168-7.73975199 23.117726-20.565057 26.992099-1.59291999 0.628974-3.769444 1.287527-5.33938 1.944682-118.33337 48.998179-154.353348 156.450527-155.41962501 244.680906-0.145901 12.395996-9.710416 25.903437-25.87005999 25.903437-27.384433 0-75.805404-54.968531-75.805404-122.98321699 0-61.41576 2.480318-72.041556 23.98274-136.04236302-259.02877801 0-257.207014-3.714482-280.070512-9.71141599-28.335588-8.094512-30.762143-31.571994-30.762143-39.665907C150.608975 651.26071432 150.862803 652.55383732 151.214565 643.84973932zM811.116951 346.89287632c21.447459 0 38.852458-17.4042 38.852458-38.854657s-17.405199-38.853457-38.852458-38.853457c-21.454854 0-38.855656 17.40320101-38.855656 38.853457S789.664495 346.89287632 811.116951 346.89287632zM811.116951 295.08320332c7.13056501 0 12.94722199 5.820054 12.947222 12.955216 0 7.13416301-5.81805499 12.951219-12.947222 12.951219-7.137161 0-12.952618-5.817056-12.952618-12.951219C798.164333 300.90325732 803.97979 295.08320332 811.116951 295.08320332z\" p-id=\"7974\"></path></svg>"
 
 /***/ }),
 /* 198 */
 /***/ (function(module, exports) {
 
-module.exports = "<svg viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M512 366.949535c-16.065554 0-29.982212 13.405016-29.982212 29.879884l0 359.070251c0 16.167882 13.405016 29.879884 29.982212 29.879884 15.963226 0 29.879884-13.405016 29.879884-29.879884L541.879884 396.829419C541.879884 380.763865 528.474868 366.949535 512 366.949535L512 366.949535z\"\n    p-id=\"3083\"></path>\n  <path d=\"M482.017788 287.645048c0-7.776956 3.274508-15.553912 8.80024-21.181973 5.525732-5.525732 13.302688-8.80024 21.181973-8.80024 7.776956 0 15.553912 3.274508 21.079644 8.80024 5.525732 5.62806 8.80024 13.405016 8.80024 21.181973 0 7.776956-3.274508 15.656241-8.80024 21.181973-5.525732 5.525732-13.405016 8.697911-21.079644 8.697911-7.879285 0-15.656241-3.274508-21.181973-8.697911C485.292295 303.301289 482.017788 295.524333 482.017788 287.645048L482.017788 287.645048z\"\n    p-id=\"3084\"></path>\n  <path d=\"M512 946.844409c-239.8577 0-434.895573-195.037873-434.895573-434.895573 0-239.8577 195.037873-434.895573 434.895573-434.895573 239.755371 0 434.895573 195.037873 434.895573 434.895573C946.895573 751.806535 751.755371 946.844409 512 946.844409zM512 126.17088c-212.740682 0-385.880284 173.037274-385.880284 385.777955 0 212.740682 173.037274 385.777955 385.880284 385.777955 212.740682 0 385.777955-173.037274 385.777955-385.777955C897.777955 299.208154 724.740682 126.17088 512 126.17088z\"\n    p-id=\"3085\"></path>\n</svg>\n"
+module.exports = "<svg t=\"1563936774092\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1216\" width=\"200\" height=\"200\"><path d=\"M827.392 28.672h-630.784c-106.496 0-192.512 86.016-192.512 196.608v389.12c0 106.496 86.016 196.608 192.512 196.608h94.208l-16.384 147.456c-4.096 20.48 8.192 40.96 24.576 49.152 8.192 4.096 16.384 8.192 28.672 8.192 8.192 0 20.48-4.096 28.672-8.192l290.816-196.608h184.32c106.496 0 192.512-86.016 192.512-196.608v-385.024c0-114.688-86.016-200.704-196.608-200.704z m118.784 589.824c0 53.248-45.056 98.304-98.304 98.304h-212.992c-12.288 0-20.48 4.096-28.672 8.192l-221.184 151.552 12.288-98.304c0-16.384-4.096-28.672-12.288-40.96-8.192-12.288-24.576-16.384-40.96-16.384h-159.744c-53.248 0-98.304-45.056-98.304-98.304v-409.6c0-53.248 45.056-98.304 98.304-98.304h663.552c53.248 0 98.304 45.056 98.304 98.304v405.504z\" p-id=\"1217\" fill=\"#2c2c2c\"></path><path d=\"M278.528 397.312m-61.44 0a61.44 61.44 0 1 0 122.88 0 61.44 61.44 0 1 0-122.88 0Z\" p-id=\"1218\" fill=\"#2c2c2c\"></path><path d=\"M749.568 397.312m-61.44 0a61.44 61.44 0 1 0 122.88 0 61.44 61.44 0 1 0-122.88 0Z\" p-id=\"1219\" fill=\"#2c2c2c\"></path><path d=\"M516.096 397.312m-61.44 0a61.44 61.44 0 1 0 122.88 0 61.44 61.44 0 1 0-122.88 0Z\" p-id=\"1220\" fill=\"#2c2c2c\"></path></svg>"
 
 /***/ }),
 /* 199 */
+/***/ (function(module, exports) {
+
+module.exports = "<svg viewBox=\"0 0 1332 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M529.066665 273.066666 529.066665 0 51.2 477.866666 529.066665 955.733335 529.066665 675.84C870.4 675.84 1109.333335 785.066665 1280 1024 1211.733335 682.666665 1006.933335 341.333334 529.066665 273.066666\"></path>\n</svg>\n"
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports) {
+
+module.exports = "<svg viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M512 366.949535c-16.065554 0-29.982212 13.405016-29.982212 29.879884l0 359.070251c0 16.167882 13.405016 29.879884 29.982212 29.879884 15.963226 0 29.879884-13.405016 29.879884-29.879884L541.879884 396.829419C541.879884 380.763865 528.474868 366.949535 512 366.949535L512 366.949535z\"\n    p-id=\"3083\"></path>\n  <path d=\"M482.017788 287.645048c0-7.776956 3.274508-15.553912 8.80024-21.181973 5.525732-5.525732 13.302688-8.80024 21.181973-8.80024 7.776956 0 15.553912 3.274508 21.079644 8.80024 5.525732 5.62806 8.80024 13.405016 8.80024 21.181973 0 7.776956-3.274508 15.656241-8.80024 21.181973-5.525732 5.525732-13.405016 8.697911-21.079644 8.697911-7.879285 0-15.656241-3.274508-21.181973-8.697911C485.292295 303.301289 482.017788 295.524333 482.017788 287.645048L482.017788 287.645048z\"\n    p-id=\"3084\"></path>\n  <path d=\"M512 946.844409c-239.8577 0-434.895573-195.037873-434.895573-434.895573 0-239.8577 195.037873-434.895573 434.895573-434.895573 239.755371 0 434.895573 195.037873 434.895573 434.895573C946.895573 751.806535 751.755371 946.844409 512 946.844409zM512 126.17088c-212.740682 0-385.880284 173.037274-385.880284 385.777955 0 212.740682 173.037274 385.777955 385.880284 385.777955 212.740682 0 385.777955-173.037274 385.777955-385.777955C897.777955 299.208154 724.740682 126.17088 512 126.17088z\"\n    p-id=\"3085\"></path>\n</svg>\n"
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports) {
+
+module.exports = "<svg t=\"1563937417681\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"8094\" width=\"200\" height=\"200\"><path d=\"M851.738705 274.89422468c-32.37704801-8.499637-108.515027-8.400704-219.866331-11.332716 5.258435-24.30652 6.473611-46.213667 6.473611-85.12068799 0-92.93219199-67.688907-174.792491-127.606083-174.79249101-42.268342 0-77.151491 34.581354-77.679134 77.102924-0.582605 52.159036-16.700677 142.261147-103.610552 187.946172-6.378675 3.365118-24.61631 12.342032-27.270511 13.534823l1.36607399 1.161213c-13.612771-11.73704199-32.453996-20.719352-51.80527599-20.719352L174.030591 262.67410968c-42.849748 0-77.706515 34.859765-77.706515 77.709113l-1e-8 414.432015c0 42.848948 34.856767 77.709113 77.70651501 77.709113l77.709513 0c30.835494 0 56.608419-18.620375 69.10494699-44.725476 0.305793 0.100932 0.862415 0.255827 1.216175 0.30479299 1.715837 0.454692 3.71947801 0.960349 6.19579901 1.61590401 0.45669 0.105928 0.710518 0.159892 1.19319099 0.31078899 14.92388199 3.692496 43.632217 10.570833 105.02159501 24.68506402 13.185061 2.983977 82.65975701 17.808926 154.695716 17.80892599l141.608589 1e-8c43.154541 0 74.267447-16.589752 92.782893-49.93214601 0.253828-0.50565699 6.221782-12.147764 11.080487-27.881097 3.64253-11.827981 5.007605-28.575626 0.607588-45.576899 27.822936-19.127032 36.778064-48.011248 42.596919-66.818497 9.765379-30.862076 6.82937-54.031167 0.053963-70.624916 15.630403-14.77498301 28.98235-37.282722 34.60154-71.63722999 3.487635-21.295562-0.253828-43.202509-10.071172-61.44713901 14.673851-16.466236 21.352323-37.185188 22.108011-56.35659l0.308791-5.414329c0.20186301-3.413686 0.354759-5.517259 0.354759-12.974203C925.19989801 331.12809768 902.533266 289.41637868 851.738705 274.89422468zM277.640943 754.81523768c0 14.316294-11.584146 25.89944-25.90044 25.89944L174.030591 780.71467768c-14.317693 0-25.902438-11.583147-25.902438-25.89944L148.128153 340.38382268c0-14.318292 11.58454599-25.90044 25.902438-25.90044l77.707714 0c14.318292 0 25.90243799 11.582147 25.90243801 25.90044l0 414.431416L277.640943 754.81523768zM872.785435 380.15026068c-0.504658 12.79832301-5.868021 37.936679-51.19409 37.936679-38.860652 0-51.807674 0-51.807674 0-7.185128 0-12.953218 5.79607001-12.953218 12.957215 0 7.157747 5.76808901 12.946622 12.953218 12.946622 0 0 11.330318 0 50.183775 0 38.85545599 0 43.963992 32.230148 41.432709 47.760418-3.182842 19.329894-12.242699 55.85493-55.998833 55.85493-43.712163 0-61.522088 0-61.522088 0-7.186128 0-12.94922 5.768089-12.94922 12.951219 0 7.13516201 5.762893 12.948221 12.94922 12.948221 0 0 30.761144 0 50.997224 1e-8 43.709365 0 39.862973 33.344193 33.589227 53.22371399-8.24441 26.143275-13.302981 50.377644-68.399425 50.377644-18.614379 0-42.238163 0-42.238163 0-7.184129 0-12.948221 5.76709-12.94822101 12.951219 0 7.13516201 5.764092 12.952218 12.94822101 12.952218 0 0 17.959823 0 40.617461 0 28.336788 0 29.653895 26.811822 26.715687 36.421106-3.237805 10.526863-7.0792 18.316581-7.232896 18.670342-7.840684 14.117428-20.438143 22.612669-47.151831 22.612669l-141.608589 0c-71.124578 0-141.665551-16.133062-143.486316-16.543783-107.606843-24.783197-113.27100201-26.709891-120.027421-28.631588 0 0-21.908146-3.691497-21.908146-22.812533l-0.199864-357.748447c0-12.142168 7.73975199-23.117726 20.565057-26.992099 1.59291999-0.628974 3.769444-1.287527 5.33938-1.944682 118.33337-48.998179 154.353348-156.450527 155.41962501-244.680906 0.145901-12.395996 9.710416-25.903437 25.87005999-25.903437 27.384433 0 75.805404 54.968531 75.805404 122.983217 0 61.41576-2.480318 72.041556-23.98274 136.04236301 259.02877801 0 257.207014 3.714482 280.070512 9.71141599 28.335588 8.094512 30.762143 31.571994 30.762143 39.665907C873.391025 372.73928568 873.137197 371.44616268 872.785435 380.15026068zM212.883049 677.10712369c-21.447459 0-38.852458 17.4042-38.852458 38.85465699s17.405199 38.853457 38.852458 38.853457c21.454854 0 38.855656-17.40320101 38.855656-38.853457S234.335505 677.10712369 212.883049 677.10712369zM212.883049 728.91679669c-7.13056501 0-12.94722199-5.820054-12.94722199-12.95521601 0-7.13416301 5.81805499-12.951219 12.94722199-12.951219 7.137161 0 12.952618 5.817056 12.952618 12.951219C225.835667 723.09674268 220.02021 728.91679668 212.883049 728.91679669z\" p-id=\"8095\"></path></svg>"
+
+/***/ }),
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var distanceInWords = __webpack_require__(200)
+var distanceInWords = __webpack_require__(203)
 
 /**
  * @category Common Helpers
@@ -13747,14 +13768,14 @@ module.exports = distanceInWordsToNow
 
 
 /***/ }),
-/* 200 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var compareDesc = __webpack_require__(201)
+var compareDesc = __webpack_require__(204)
 var parse = __webpack_require__(18)
-var differenceInSeconds = __webpack_require__(203)
-var differenceInMonths = __webpack_require__(205)
-var enLocale = __webpack_require__(208)
+var differenceInSeconds = __webpack_require__(206)
+var differenceInMonths = __webpack_require__(208)
+var enLocale = __webpack_require__(211)
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -13956,7 +13977,7 @@ module.exports = distanceInWords
 
 
 /***/ }),
-/* 201 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse = __webpack_require__(18)
@@ -14013,7 +14034,7 @@ module.exports = compareDesc
 
 
 /***/ }),
-/* 202 */
+/* 205 */
 /***/ (function(module, exports) {
 
 /**
@@ -14039,10 +14060,10 @@ module.exports = isDate
 
 
 /***/ }),
-/* 203 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var differenceInMilliseconds = __webpack_require__(204)
+var differenceInMilliseconds = __webpack_require__(207)
 
 /**
  * @category Second Helpers
@@ -14073,7 +14094,7 @@ module.exports = differenceInSeconds
 
 
 /***/ }),
-/* 204 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse = __webpack_require__(18)
@@ -14108,12 +14129,12 @@ module.exports = differenceInMilliseconds
 
 
 /***/ }),
-/* 205 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse = __webpack_require__(18)
-var differenceInCalendarMonths = __webpack_require__(206)
-var compareAsc = __webpack_require__(207)
+var differenceInCalendarMonths = __webpack_require__(209)
+var compareAsc = __webpack_require__(210)
 
 /**
  * @category Month Helpers
@@ -14152,7 +14173,7 @@ module.exports = differenceInMonths
 
 
 /***/ }),
-/* 206 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse = __webpack_require__(18)
@@ -14190,7 +14211,7 @@ module.exports = differenceInCalendarMonths
 
 
 /***/ }),
-/* 207 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var parse = __webpack_require__(18)
@@ -14247,11 +14268,11 @@ module.exports = compareAsc
 
 
 /***/ }),
-/* 208 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var buildDistanceInWordsLocale = __webpack_require__(209)
-var buildFormatLocale = __webpack_require__(210)
+var buildDistanceInWordsLocale = __webpack_require__(212)
+var buildFormatLocale = __webpack_require__(213)
 
 /**
  * @category Locales
@@ -14264,7 +14285,7 @@ module.exports = {
 
 
 /***/ }),
-/* 209 */
+/* 212 */
 /***/ (function(module, exports) {
 
 function buildDistanceInWordsLocale () {
@@ -14369,10 +14390,10 @@ module.exports = buildDistanceInWordsLocale
 
 
 /***/ }),
-/* 210 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var buildFormattingTokensRegExp = __webpack_require__(211)
+var buildFormattingTokensRegExp = __webpack_require__(214)
 
 function buildFormatLocale () {
   // Note: in English, the names of days of the week and months are capitalized.
@@ -14463,7 +14484,7 @@ module.exports = buildFormatLocale
 
 
 /***/ }),
-/* 211 */
+/* 214 */
 /***/ (function(module, exports) {
 
 var commonFormatterKeys = [
@@ -14497,7 +14518,7 @@ module.exports = buildFormattingTokensRegExp
 
 
 /***/ }),
-/* 212 */
+/* 215 */
 /***/ (function(module, exports) {
 
 function buildDistanceInWordsLocale () {
@@ -14602,7 +14623,7 @@ module.exports = buildDistanceInWordsLocale
 
 
 /***/ }),
-/* 213 */
+/* 216 */
 /***/ (function(module, exports) {
 
 function buildDistanceInWordsLocale () {
@@ -14707,7 +14728,7 @@ module.exports = buildDistanceInWordsLocale
 
 
 /***/ }),
-/* 214 */
+/* 217 */
 /***/ (function(module, exports) {
 
 function buildDistanceInWordsLocale () {
@@ -14812,7 +14833,7 @@ module.exports = buildDistanceInWordsLocale
 
 
 /***/ }),
-/* 215 */
+/* 218 */
 /***/ (function(module, exports) {
 
 function buildDistanceInWordsLocale () {
@@ -14917,7 +14938,7 @@ module.exports = buildDistanceInWordsLocale
 
 
 /***/ }),
-/* 216 */
+/* 219 */
 /***/ (function(module, exports) {
 
 function declension (scheme, count) {
@@ -15157,13 +15178,13 @@ module.exports = buildDistanceInWordsLocale
 
 
 /***/ }),
-/* 217 */
+/* 220 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 218 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15206,7 +15227,7 @@ exports.default = function (_ref) {
 };
 
 /***/ }),
-/* 219 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15220,7 +15241,7 @@ var GT_VERSION = exports.GT_VERSION = "1.5.0"; // eslint-disable-line
 var GT_COMMENT = exports.GT_COMMENT = 'GT_COMMENT';
 
 /***/ }),
-/* 220 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15230,7 +15251,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _toConsumableArray2 = __webpack_require__(221);
+var _toConsumableArray2 = __webpack_require__(224);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -15316,7 +15337,7 @@ function getComments(issue) {
 exports.default = getComments;
 
 /***/ }),
-/* 221 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15324,7 +15345,7 @@ exports.default = getComments;
 
 exports.__esModule = true;
 
-var _from = __webpack_require__(222);
+var _from = __webpack_require__(225);
 
 var _from2 = _interopRequireDefault(_from);
 
@@ -15343,22 +15364,22 @@ exports.default = function (arr) {
 };
 
 /***/ }),
-/* 222 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(223), __esModule: true };
+module.exports = { "default": __webpack_require__(226), __esModule: true };
 
 /***/ }),
-/* 223 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(20);
-__webpack_require__(224);
+__webpack_require__(227);
 module.exports = __webpack_require__(0).Array.from;
 
 
 /***/ }),
-/* 224 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15369,7 +15390,7 @@ var toObject = __webpack_require__(17);
 var call = __webpack_require__(58);
 var isArrayIter = __webpack_require__(59);
 var toLength = __webpack_require__(37);
-var createProperty = __webpack_require__(225);
+var createProperty = __webpack_require__(228);
 var getIterFn = __webpack_require__(42);
 
 $export($export.S + $export.F * !__webpack_require__(64)(function (iter) { Array.from(iter); }), 'Array', {
@@ -15402,7 +15423,7 @@ $export($export.S + $export.F * !__webpack_require__(64)(function (iter) { Array
 
 
 /***/ }),
-/* 225 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

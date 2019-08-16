@@ -1,5 +1,4 @@
 import axios from 'axios'
-import emoji from './emoji'
 
 export const queryParse = (search = window.location.search) => {
   if (!search) return {}
@@ -76,21 +75,85 @@ export const hasClassInParent = (element, ...className) => {
 
 
 // 输入框获取光标
-export const getPosition = element => {
-  let cursorPos = 0
-  if (document.selection) { // IE
-    const selectRange = document.selection.createRange()
-    selectRange.moveStart('character', -element.value.length)
-    cursorPos = selectRange.text.length
-  } else if (element.selectionStart || element.selectionStart === '0') {
-    cursorPos = element.selectionStart
+// export const getCursorPosition = element => {
+//   let cursorPos = 0
+//   if (document.selection) { // IE
+//     const selectRange = document.selection.createRange()
+//     selectRange.moveStart('character', -element.value.length)
+//     cursorPos = selectRange.text.length
+//   } else if (element.selectionStart || element.selectionStart === '0') {
+//     cursorPos = element.selectionStart
+//   }
+//   return cursorPos
+// }
+
+export const getCursorPosition = obj => {
+  let cursorIndex = 0
+  if (document.selection) {
+    // IE Support
+    obj.focus()
+    const range = document.selection.createRange()
+    range.moveStart('character', -obj.value.length)
+    cursorIndex = range.text.length
+  } else if (obj.selectionStart || obj.selectionStart === 0) {
+    // another support
+    cursorIndex = obj.selectionStart
   }
-  return cursorPos
+  return cursorIndex
 }
 
-export const getEmojiComments = (comment, emojiValue) =>
-  // console.log(emojiValue)
-  // console.log(comment)
-  // `${comment}:${emojiValue}:`
-  comment + emojiValue
+export const setCaretPosition = (textDom, pos) => {
+  if (textDom.setSelectionRange) {
+    // IE Support
+    textDom.focus()
+    textDom.setSelectionRange(pos, pos)
+  } else if (textDom.createTextRange) {
+    // Firefox support
+    const range = textDom.createTextRange()
+    range.collapse(true)
+    range.moveEnd('character', pos)
+    range.moveStart('character', pos)
+    range.select()
+  }
+}
 
+export const getEmojiComments = (comment, emojiValue, position) => {
+  if (comment) {
+    if (comment.length > position) {
+      return comment.substring(0, position) + emojiValue + comment.substring(position, comment.length)
+    }
+    return comment + emojiValue
+  }
+  return emojiValue
+}
+
+
+/**
+* 在光标后插入文本
+* 参数：
+*     textDom  [JavaScript DOM String] 当前对象
+*     value  [String]  要插入的文本
+*/
+export const insertAfterText = (textDom, value) => {
+  let selectRange
+  if (document.selection) {
+    // IE Support
+    textDom.focus()
+    selectRange = document.selection.createRange()
+    selectRange.text = value
+    textDom.focus()
+  } else if (textDom.selectionStart || textDom.selectionStart === '0') {
+    // Firefox support
+    const startPos = textDom.selectionStart
+    const endPos = textDom.selectionEnd
+    const scrollTop = textDom.scrollTop
+    textDom.value = textDom.value.substring(0, startPos) + value + textDom.value.substring(endPos, textDom.value.length)
+    textDom.focus()
+    textDom.selectionStart = startPos + value.length
+    textDom.selectionEnd = startPos + value.length
+    textDom.scrollTop = scrollTop
+  } else {
+    textDom.value += value
+    textDom.focus()
+  }
+}

@@ -13,7 +13,10 @@ import {
   getMetaContent,
   formatErrorMsg,
   hasClassInParent,
-  getEmojiComments
+  getEmojiComments,
+  getCursorPosition,
+  setCaretPosition,
+  insertAfterText
 } from './util'
 import Avatar from './component/avatar'
 import Button from './component/button'
@@ -50,7 +53,8 @@ class GitalkComponent extends Component {
     isOccurError: false,
     errorMsg: '',
     emojiShow: false,
-    emojis: []
+    emojis: [],
+    cursorPosition: 0 // 光标位置
   }
   constructor (props) {
     super(props)
@@ -548,7 +552,12 @@ class GitalkComponent extends Component {
     this.setState({ isLoadMore: true })
     this.getComments(issue).then(() => this.setState({ isLoadMore: false }))
   }
-  handleCommentChange = e => this.setState({ comment: e.target.value })
+  handleCommentChange = e => {
+    this.setState({ comment: e.target.value })
+    // 获取光标位置记下来
+    this.setState({ cursorPosition: getCursorPosition(e.target) })
+    console.log(this.state.cursorPosition)
+  }
   handleLogout = () => {
     this.logout()
     window.location.reload()
@@ -557,6 +566,11 @@ class GitalkComponent extends Component {
     const { distractionFreeMode } = this.options
     if (!distractionFreeMode) return e.preventDefault()
     this.setState({ isInputFocused: true })
+  }
+  handleCommentClick = e => {
+    // 获取光标位置记下来
+    this.setState({ cursorPosition: getCursorPosition(e.target) })
+    console.log(this.state.cursorPosition)
   }
   handleCommentBlur = e => {
     const { distractionFreeMode } = this.options
@@ -613,6 +627,7 @@ class GitalkComponent extends Component {
             ref={t => { this.commentEL = t }}
             className={`gt-header-textarea ${isPreview ? 'hide' : ''}`}
             value={comment}
+            onClick={this.handleCommentClick}
             onChange={this.handleCommentChange}
             onFocus={this.handleCommentFocus}
             onBlur={this.handleCommentBlur}
@@ -688,7 +703,10 @@ class GitalkComponent extends Component {
   handleEmojiClick = e => {
     // console.log(this)
     // console.log(this.state)
-    const { emojiShow } = this.state
+    // 将光标设置到textarea 中
+    const { cursorPosition, emojiShow } = this.state
+    const textDom = document.querySelector('.gt-header-textarea')
+    setCaretPosition(textDom, cursorPosition)
     this.setState({ emojiShow: !emojiShow })
   }
   getEmojiJson () {
@@ -698,10 +716,14 @@ class GitalkComponent extends Component {
     e = e || window.event
     e.stopPropagation ? (e.stopPropagation()) : (e.cancelBubble = true)
 
-    const { comment } = this.state
+    const { comment, cursorPosition } = this.state
     // const emojiValue = e.target.getAttribute('data')
     const emoji = e.target.innerHTML
-    this.setState({ comment: getEmojiComments(comment, emoji) })
+    const newPosition = cursorPosition + emoji.length
+    this.setState({ comment: getEmojiComments(comment, emoji, cursorPosition) })
+    this.setState({ cursorPosition: newPosition })
+    const textDom = document.querySelector('.gt-header-textarea')
+    setCaretPosition(textDom, newPosition)
   }
   emoji () {
     const { emojis, emojiShow } = this.state

@@ -16,7 +16,7 @@ import {
   getEmojiComments,
   getCursorPosition,
   setCaretPosition,
-  insertAfterText
+  // insertAfterText
 } from './util'
 import Avatar from './component/avatar'
 import Button from './component/button'

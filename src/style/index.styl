@@ -5,7 +5,9 @@ $gt-color-loader := #999999
 $gt-color-error := #ff3860
 $gt-color-hr :=  #E9E9E9
 $gt-color-input-border := rgba(0,0,0,0.1)
-$gt-color-input-bg := #f6f6f6
+// $gt-color-input-bg := #f6f6f6
+$gt-color-input-bg := #f4f9ff
+$gt-color-input-border-bg := $gt-color-main
 $gt-color-comment-bg := #f9f9f9
 $gt-color-comment-adminbg := #f6f9fe
 $gt-color-comment-txt := #333333
@@ -294,7 +296,7 @@ $gt-size-avatar-mobi := em(32px)
       display: block
       box-sizing: border-box
       width: 100%
-      min-height: em(82px)
+      min-height: em(120px)
       max-height: em(240px)
       border-radius: $gt-size-border-radius
       border: 1px solid $gt-color-input-border
@@ -304,9 +306,12 @@ $gt-size-avatar-mobi := em(32px)
       background-color: $gt-color-input-bg
       outline: none
       transition: all 0.25s ease
-      &:hover
-        background-color: lighten($gt-color-input-bg, 50%)
-        // box-shadow: 0 em(10px) em(60px) 0 $gt-color-input-bg
+      // &:hover
+      //   background-color: lighten($gt-color-input-bg, 90%)
+      //   box-shadow: 0 em(10px) em(60px) 0 $gt-color-input-bg
+      &:focus
+        background-color: lighten($gt-color-input-bg, 90%)
+        border: 1px solid $gt-color-input-border-bg
     &-preview
       padding: em(12px)
       border-radius: $gt-size-border-radius

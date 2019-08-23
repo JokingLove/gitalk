@@ -764,7 +764,7 @@ class GitalkComponent extends Component {
               <a className="gt-action gt-action-login" onMouseDown={this.handleLogin}>{this.i18n.t('login-with-github')}</a>
             }
             <div className="gt-copyright">
-              <a className="gt-link gt-link-project" href="https://github.com/gitalk/gitalk" target="_blank">Gitalk</a>
+              <a className="gt-link gt-link-project" href="https://github.com/jokinglove/gitalk" target="_blank">Gitalk</a>
               <span className="gt-version">{GT_VERSION}</span>
             </div>
           </div>

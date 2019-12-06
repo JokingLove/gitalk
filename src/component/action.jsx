@@ -5,3 +5,4 @@ export default ({ className, onClick, text }) => (
     <span className="gt-action-text">{text}</span>
   </a>
 )
+  

@@ -7318,7 +7318,7 @@ var GitalkComponent = function (_Component) {
             { className: 'gt-copyright' },
             _react2.default.createElement(
               'a',
-              { className: 'gt-link gt-link-project', href: 'https://github.com/gitalk/gitalk', target: '_blank' },
+              { className: 'gt-link gt-link-project', href: 'https://github.com/jokinglove/gitalk', target: '_blank' },
               'Gitalk'
             ),
             _react2.default.createElement(

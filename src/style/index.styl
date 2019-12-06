@@ -4,18 +4,19 @@ $gt-color-sub := #a1a1a1
 $gt-color-loader := #999999
 $gt-color-error := #ff3860
 $gt-color-hr :=  #E9E9E9
-$gt-color-input-border := rgba(51,51,51,.3);
+$gt-color-input-border := rgba(51,51,51,.3)
+$gt-color-input-height := 240px
 // $gt-color-input-bg := #f6f6f6
-$gt-color-input-bg := #f4f9ff
+$gt-color-input-bg := #fdfdfd
 $gt-color-input-border-bg := $gt-color-main
-$gt-color-comment-bg := #f9f9f9
-$gt-color-comment-adminbg := #f6f9fe
+$gt-color-comment-bg := #fdfdfd
+$gt-color-comment-adminbg := #fdfdfd
 $gt-color-comment-txt := #333333
 $gt-color-link-active := #333333
 $gt-color-btn := #ffffff
 $gt-color-popbg := #ffffff
 $gt-size-base := 18px // default font-size
-$gt-size-border-radius := 5px
+$gt-size-border-radius := 10px
 $gt-breakpoint-mobile := 479px
 $gt-mask-z-index := 9999
 
@@ -296,8 +297,8 @@ $gt-size-avatar-mobi := em(32px)
       display: block
       box-sizing: border-box
       width: 100%
-      min-height: em(120px)
-      max-height: em(240px)
+      min-height: em($gt-color-input-height)
+      max-height: em(280px)
       border-radius: $gt-size-border-radius
       border: 1px dashed $gt-color-input-border
       font-size: em(16px)
@@ -376,6 +377,11 @@ $gt-size-avatar-mobi := em(32px)
     position: relative
     padding: em(10px) 0
     display: flex
+    border-bottom: 1px dashed #ddd
+    margin-top: 20px
+    &:hover
+        box-shadow: 0 em(10px) em(60px) 0 darken($gt-color-comment-bg, 2%)
+        transition: all .2s linear
     &-content
       flex: 1
       margin-left: em(20px)
@@ -383,8 +389,8 @@ $gt-size-avatar-mobi := em(32px)
       background-color: $gt-color-comment-bg
       overflow: auto
       transition: all ease 0.25s
-      &:hover
-        box-shadow: 0 em(10px) em(60px) 0 darken($gt-color-comment-bg, 2%)
+      // &:hover
+      //   box-shadow: 0 em(10px) em(60px) 0 darken($gt-color-comment-bg, 2%)
       +mobile()
         margin-left: em(14px)
         padding: em(10px) em(12px)

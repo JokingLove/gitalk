@@ -69,7 +69,7 @@ class GitalkComponent extends Component {
       pagerDirection: 'last', // last or first
       createIssueManually: false,
       distractionFreeMode: false,
-      proxy: 'https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
       flipMoveOptions: {
         staggerDelayBy: 150,
         appearAnimation: 'accordionVertical',
@@ -170,7 +170,7 @@ class GitalkComponent extends Component {
     this._accessToken = token
   }
   get loginLink () {
-    const githubOauthUrl = 'http://github.com/login/oauth/authorize'
+    const githubOauthUrl = 'https://github.com/login/oauth/authorize'
     const { clientID } = this.options
     const query = {
       client_id: clientID,
@@ -190,6 +190,11 @@ class GitalkComponent extends Component {
     return this.getUserInfo().then(() => this.getIssue()).then(issue => this.getComments(issue))
   }
   getUserInfo () {
+    if (!this.accessToken) {
+      return new Promise(resolve => {
+        resolve()
+      })
+    }
     return axiosGithub.get('/user', {
       headers: {
         Authorization: `token ${this.accessToken}`
@@ -206,6 +211,10 @@ class GitalkComponent extends Component {
 
     return new Promise((resolve, reject) => {
       axiosGithub.get(getUrl, {
+        auth: {
+          username: clientID,
+          password: clientSecret
+        },
         params: {
           client_id: clientID,
           client_secret: clientSecret,
@@ -233,6 +242,10 @@ class GitalkComponent extends Component {
     const { owner, repo, id, labels, clientID, clientSecret } = this.options
 
     return axiosGithub.get(`/repos/${owner}/${repo}/issues`, {
+      auth: {
+        username: clientID,
+        password: clientSecret
+      },
       params: {
         client_id: clientID,
         client_secret: clientSecret,
@@ -294,6 +307,7 @@ class GitalkComponent extends Component {
   getCommentsV3 = issue => {
     const { clientID, clientSecret, perPage } = this.options
     const { page } = this.state
+
     return this.getIssue()
       .then(issue => {
         if (!issue) return
@@ -301,6 +315,10 @@ class GitalkComponent extends Component {
         return axiosGithub.get(issue.comments_url, {
           headers: {
             Accept: 'application/vnd.github.v3.full+json'
+          },
+          auth: {
+            username: clientID,
+            password: clientSecret
           },
           params: {
             client_id: clientID,
@@ -398,6 +416,7 @@ class GitalkComponent extends Component {
 
           c.reactions.nodes.push(res.data)
           c.reactions.viewerHasReacted = true
+          return Object.assign({}, c)
         }
         return c
       })
@@ -455,6 +474,7 @@ class GitalkComponent extends Component {
               c.reactions.nodes.splice(index, 1)
             }
             c.reactions.viewerHasReacted = false
+            return Object.assign({}, c)
           }
           return c
         })
@@ -504,6 +524,12 @@ class GitalkComponent extends Component {
         isOccurError: true,
         errorMsg: formatErrorMsg(err)
       })
+    }).then(res => {
+      if (res) {
+        this.setState({
+          isNoInit: false,
+        })
+      }
     })
   }
   handleCommentCreate = e => {
@@ -512,19 +538,23 @@ class GitalkComponent extends Component {
       this.commentEL.focus()
       return
     }
-    this.setState({ isCreating: true })
-    this.createComment()
-      .then(() => this.setState({
-        isCreating: false,
-        isOccurError: false
-      }))
-      .catch(err => {
-        this.setState({
+    this.setState(state => {
+      if (state.isCreating) return
+
+      this.createComment()
+        .then(() => this.setState({
           isCreating: false,
-          isOccurError: true,
-          errorMsg: formatErrorMsg(err)
+          isOccurError: false
+        }))
+        .catch(err => {
+          this.setState({
+            isCreating: false,
+            isOccurError: true,
+            errorMsg: formatErrorMsg(err)
+          })
         })
-      })
+      return { isCreating: true }
+    })
   }
   handleCommentPreview = e => {
     this.setState({
@@ -612,13 +642,14 @@ class GitalkComponent extends Component {
       </div>
     )
   }
+
   header () {
     const { user, comment, isCreating, previewHtml, isPreview } = this.state
     return (
       <div className="gt-header" key="header">
         {user ?
-          <Avatar className="gt-header-avatar" src={user.avatar_url} /> :
-          <a className="gt-avatar-github" onMouseDown={this.handleLogin}>
+          <Avatar className="gt-header-avatar" src={user.avatar_url} alt={user.login} /> :
+          <a className="gt-avatar-github" onClick={this.handleLogin}>
             <Svg className="gt-ico-github" name="github"/>
           </a>
         }
@@ -632,20 +663,20 @@ class GitalkComponent extends Component {
             onFocus={this.handleCommentFocus}
             onBlur={this.handleCommentBlur}
             onKeyDown={this.handleCommentKeyDown}
-            placeholder={this.options.placeholder ? this.options.placeholder : this.i18n.t('leave-a-comment')}
+            placeholder={this.i18n.t('leave-a-comment')}
           />
           <div
             className={`gt-header-preview markdown-body ${isPreview ? '' : 'hide'}`}
             dangerouslySetInnerHTML={{ __html: previewHtml }}
           />
           <div className="gt-header-controls">
-            <a className="gt-header-controls-tip" href="https://guides.github.com/features/mastering-markdown/" target="_blank">
+            <a className="gt-header-controls-tip" href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener noreferrer">
               <Svg className="gt-ico-tip" name="tip" text={this.i18n.t('support-markdown')}/>
             </a>
             {user && <Button
               getRef={this.getRef}
               className="gt-btn-public"
-              onMouseDown={this.handleCommentCreate}
+              onClick={this.handleCommentCreate}
               text={this.i18n.t('comment')}
               isLoading={isCreating}
             />}
@@ -660,11 +691,11 @@ class GitalkComponent extends Component {
 
             <Button
               className="gt-btn-preview"
-              onMouseDown={this.handleCommentPreview}
+              onClick={this.handleCommentPreview}
               text={isPreview ? this.i18n.t('edit') : this.i18n.t('preview')}
               // isLoading={isPreviewing}
             />
-            {!user && <Button className="gt-btn-login" onMouseDown={this.handleLogin} text={this.i18n.t('login-with-github')} />}
+            {!user && <Button className="gt-btn-login" onClick={this.handleLogin} text={this.i18n.t('login-with-github')} />}
           </div>
         </div>
       </div>
@@ -751,7 +782,7 @@ class GitalkComponent extends Component {
       <div className="gt-meta" key="meta" >
         <span className="gt-counts" dangerouslySetInnerHTML={{
           __html: this.i18n.t('counts', {
-            counts: `<a class="gt-link gt-link-counts" href="${issue && issue.html_url}" target="_blank">${cnt}</a>`,
+            counts: `<a class="gt-link gt-link-counts" href="${issue && issue.html_url}" target="_blank" rel="noopener noreferrer">${cnt}</a>`,
             smart_count: cnt
           })
         }}/>
@@ -761,7 +792,7 @@ class GitalkComponent extends Component {
             {user ? <Action className={`gt-action-sortdesc${isDesc ? ' is--active' : ''}`} onClick={this.handleSort('last')} text={this.i18n.t('sort-desc')}/> : null }
             {user ?
               <Action className="gt-action-logout" onClick={this.handleLogout} text={this.i18n.t('logout')}/> :
-              <a className="gt-action gt-action-login" onMouseDown={this.handleLogin}>{this.i18n.t('login-with-github')}</a>
+              <a className="gt-action gt-action-login" onClick={this.handleLogin}>{this.i18n.t('login-with-github')}</a>
             }
             <div className="gt-copyright">
               <a className="gt-link gt-link-project" href="https://github.com/jokinglove/gitalk" target="_blank">Gitalk</a>

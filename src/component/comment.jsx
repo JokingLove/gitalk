@@ -1,33 +1,40 @@
 import React, { Component } from 'react'
 import Avatar from './avatar'
 import Svg from './svg'
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now'
-import buildDistanceInWordsLocaleZHCN from 'date-fns/locale/zh_cn/build_distance_in_words_locale/index'
-import buildDistanceInWordsLocaleZHTW from 'date-fns/locale/zh_tw/build_distance_in_words_locale/index'
-import buildDistanceInWordsLocaleES from 'date-fns/locale/es/build_distance_in_words_locale/index'
-import buildDistanceInWordsLocaleFR from 'date-fns/locale/fr/build_distance_in_words_locale/index'
-import buildDistanceInWordsLocaleRU from 'date-fns/locale/ru/build_distance_in_words_locale/index'
+import { formatDistanceToNow, parseISO } from 'date-fns'
+import { es, ru, fr, zhCN, zhTW, ko, pl, de } from 'date-fns/locale'
 import 'github-markdown-css/github-markdown.css'
 
-const ZHCN = buildDistanceInWordsLocaleZHCN()
-const ZHTW = buildDistanceInWordsLocaleZHTW()
-const ES = buildDistanceInWordsLocaleES()
-const FR = buildDistanceInWordsLocaleFR()
-const RU = buildDistanceInWordsLocaleRU()
-
 if (typeof window !== `undefined`) {
-  window.GT_i18n_distanceInWordsLocaleMap = {
-    zh: ZHCN,
-    'zh-CN': ZHCN,
-    'zh-TW': ZHTW,
-    'es-ES': ES,
-    fr: FR,
-    ru: RU
+  window.GT_i18n_LocaleMap = {
+    zh: zhCN,
+    'zh-CN': zhCN,
+    'zh-TW': zhTW,
+    'es-ES': es,
+    fr: fr,
+    ru: ru,
+    pl: pl,
+    ko: ko,
+    de: de
   }
 }
 
-
 export default class Comment extends Component {
+  shouldComponentUpdate ({ comment }) {
+    return comment !== this.props.comment
+  }
+
+  componentDidMount () {
+    const comment = this.node
+    const emailResponse = comment.querySelector('.email-hidden-toggle>a')
+    if (emailResponse) {
+      emailResponse.addEventListener('click', e => {
+        e.preventDefault()
+        comment.querySelector('.email-hidden-reply').classList.toggle('expanded')
+      }, true)
+    }
+  }
+
   render () {
     const {
       comment,
@@ -58,14 +65,16 @@ export default class Comment extends Component {
     }
 
     return (
-      <div className={`gt-comment ${isAdmin ? 'gt-comment-admin' : ''}`}>
+      <div ref={node => { this.node = node }} className={`gt-comment ${isAdmin ? 'gt-comment-admin' : ''}`}>
         <Avatar
           className="gt-comment-avatar"
           src={comment.user && comment.user.avatar_url}
+          alt={comment.user && comment.user.login}
         />
 
         <div className="gt-comment-content">
           <div className="gt-comment-header">
+            <div className={`gt-comment-block-${user ? '2' : '1'}`} />
             <a
               className="gt-comment-username"
               href={comment.user && comment.user.html_url}
@@ -74,17 +83,17 @@ export default class Comment extends Component {
             </a>
             <span className="gt-comment-text">{commentedText}</span>
             <span className="gt-comment-date">
-              {distanceInWordsToNow(comment.created_at, {
-                addSuffix: true,
-                locale: {
-                  distanceInWords:
-                    window.GT_i18n_distanceInWordsLocaleMap[language]
+              {formatDistanceToNow(
+                parseISO(comment.created_at),
+                {
+                  addSuffix: true,
+                  locale: window.GT_i18n_LocaleMap[language]
                 }
-              })}
+              )}
             </span>
 
             {reactions && (
-              <a className="gt-comment-like" onClick={likeCallback}>
+              <a className="gt-comment-like" title="Like" onClick={likeCallback}>
                 {reactions.viewerHasReacted ? (
                   <Svg
                     className="gt-ico-heart"
@@ -105,12 +114,14 @@ export default class Comment extends Component {
               <a
                 href={comment.html_url}
                 className="gt-comment-edit"
+                title="Edit"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <Svg className="gt-ico-edit" name="edit" />
               </a>
             ) : (
-              <a className="gt-comment-reply" onClick={replyCallback}>
+              <a className="gt-comment-reply" title="Reply" onClick={replyCallback}>
                 <Svg className="gt-ico-reply" name="reply-2" />
               </a>
             )}

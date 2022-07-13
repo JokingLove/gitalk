@@ -77,7 +77,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ (function(module, exports) {
 
-var core = module.exports = { version: '2.6.9' };
+var core = module.exports = { version: '2.6.12' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
@@ -1238,7 +1238,7 @@ var store = global[SHARED] || (global[SHARED] = {});
 })('versions', []).push({
   version: core.version,
   mode: __webpack_require__(19) ? 'pure' : 'global',
-  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
 });
 
 
@@ -4592,7 +4592,8 @@ var GitalkComponent = function (_Component) {
       pagerDirection: 'last', // last or first
       createIssueManually: false,
       distractionFreeMode: false,
-      proxy: 'https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token',
+      // proxy: 'https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token',
       flipMoveOptions: {
         staggerDelayBy: 150,
         appearAnimation: 'accordionVertical',
